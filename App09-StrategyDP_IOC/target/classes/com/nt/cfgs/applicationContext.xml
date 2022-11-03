@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+           
+	<bean id="dtdc" class="com.nt.component.DTDC" scope="prototype"/>
+	<bean id="dhl" class="com.nt.component.DHL" scope="singleton" lazy-init="true"/>
+	<bean id="bDart" class="com.nt.component.BlueDart" scope="prototype"/>
+	<bean id="fpkt" class="com.nt.component.Flipkart" scope="singleton" >
+		<property name="courier" ref="dtdc"/>
+	</bean>
+</beans>
