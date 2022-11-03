@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	
+	<bean id="dmds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<constructor-arg name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<constructor-arg name="username" value="system"/>
+		<constructor-arg name="password" value="ckp"/>
+	</bean>
+	<bean id="patdao" class="com.nt.dao.PatientDao">
+		<constructor-arg name="ds" ref="dmds"/>
+	</bean>
+	<bean id="patService" class="com.nt.service.PatientMgmtService">
+		<constructor-arg name="dao" ref="patdao"/>
+	</bean>
+	<bean id="patController" class="com.nt.controller.MainController">
+		<constructor-arg name="service" ref="patService"/>
+	</bean>
+</beans>
